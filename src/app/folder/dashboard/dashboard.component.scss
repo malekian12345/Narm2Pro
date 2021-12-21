@@ -1,0 +1,23 @@
+.cus-card {
+  div {
+    div {
+      background-color: #FBDD00;
+      color: #7F0000;
+      cursor: pointer;
+      transition: 0.3s;
+      .mat-icon{
+        width: 56px;
+        height: 56px;
+      }
+      svg{
+        width: 56px;
+        height: 56px;
+        color: #7f0000;
+      }
+    }
+    div:hover{
+      background-color: #E9A200;
+    }
+  }
+
+}

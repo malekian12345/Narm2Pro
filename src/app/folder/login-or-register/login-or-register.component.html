@@ -1,0 +1,90 @@
+<section class="h-full flex items-stretch text-white ">
+  <!-- left picture -->
+  <div class="lg:flex w-1/2 hidden bg-gray-100 bg-no-repeat bg-cover relative items-center">
+    <div class="absolute bg-gray-100 opacity-60 inset-0 z-0"></div>
+    <div class="bottom-0 w-full h-full absolute p-4 text-center right-0 left-0 flex justify-center space-x-4">
+      <img class="w-full h-full object-cover" src="assets/images/foods/pizza2.jpg" alt="">
+    </div>
+  </div>
+
+  <div
+    class="bg-gray-100 lg:w-1/2 w-full flex sm:items-center items-start justify-center text-center md:px-16 px-0 z-0">
+    <!-- form login-->
+    <div class="md:w-full w-11/12 mx-auto my-5 py-5 z-20 bg-gold rounded-3xl" *ngIf="!wantRegiste">
+      <div class="h-56 w-56 mx-auto">
+        <img class="w-full h-full" src="assets/images/foods/1.png" alt="">
+      </div>
+      <h1 class="text-3xl text-brown font-bold">ورود به حساب کاربری</h1>
+      <form [formGroup]='loginform' class="sm:w-4/5 w-full px-4 lg:px-0 mx-auto">
+        <div class="pb-2 pt-4">
+          <input type="email" [formControlName]="'email'" name="login_email" id="email" placeholder="ایمیل*"
+           class="block text-black text-right w-full p-4 text-lg rounded-sm ">
+        </div>
+        <div class="relative pb-2 pt-4">
+          <input [type]="hide3 ? 'password' : 'text'" [formControlName]="'pass'" maxlength="30"
+          class="block w-full text-right  p-4 text-lg rounded-lg text-black"   name="login_pass" id="password1"
+            placeholder="رمز عبور*">
+            <ion-button class="absolute top-7 left-1 text-brown" mat-icon-button matSuffix (click)="hide3 = !hide3" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide3">
+            <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </ion-button>
+        </div>
+        <div class="text-right my-2 text-gray-400 hover:underline hover:text-gray-100">
+          <a class="text-brown font-bold" href="#">رمزعبور خود را فراموش کردید؟</a>
+        </div>
+        <div class="w-full mt-3 flex justify-center items-center flex-row">
+          <button (click)="login()" id="Entering" class="w-1/3 p-2 text-2xl font-bold rounded-l-2xl bg-crimson hover:bg-orange">
+            ورود
+          </button>
+          <button (click)="wantRegiste = true;" id="register_show"
+            class="w-1/3 p-2 text-2xl font-bold bg-brown hover:bg-orange rounded-r-2xl">
+            عضویت
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- form registering -->
+    <div class="md:w-full w-11/12 mx-auto my-5 py-5 z-20 bg-gold rounded-3xl" *ngIf="wantRegiste">
+      <h1 class="text-3xl text-brown font-bold">عضویت در سامانه</h1>
+      <!-- register form -->
+      <form [formGroup]="registerForm" class="sm:w-4/5 w-full px-4 lg:px-0 mx-auto">
+        <div class="pb-2 pt-4">
+          <input type="text" [formControlName]="'name'" name="name" id="name" placeholder="نام و نام خانوادگی"
+            maxlength="45" class="block w-full text-right p-4 text-lg rounded-lg text-black">
+        </div>
+        <div class="pb-2 pt-4">
+          <input type="email" [formControlName]="'email'" name="email" id="email" placeholder="ایمیل خود را وارد کنید"
+            maxlength="45" class="block w-full text-right p-4 text-lg rounded-lg text-black">
+        </div>
+        <div class="relative pb-2 pt-4">
+          <input [type]="hide1 ? 'password' : 'text'" [formControlName]="'pass'" maxlength="30"
+          class="block w-full text-right  p-4 text-lg rounded-lg text-black"   name="password1" id="password1"
+            placeholder="رمز عبور">
+            <ion-button class="absolute top-7 left-1 text-brown"  mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide1">
+            <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </ion-button>
+        </div>
+        <div class="relative pb-2 pt-4">
+          <input [type]="hide2 ? 'password' : 'text'" [formControlName]="'passConfirm'" maxlength="30"
+            class="block w-full text-right p-4 text-lg rounded-lg text-black" name="password2" id="password2"
+            placeholder="تکرار رمز عبور">
+            <ion-button class="absolute top-7 left-1 text-brown"  mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide2">
+            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </ion-button>
+        </div>
+        <div class="w-full mt-3 flex justify-center items-center flex-row">
+          <button name="register_customer" (click)="register()" class="w-2/4 p-2 text-2xl font-bold bg-brown hover:bg-orange rounded-2xl">
+            عضویت
+          </button>
+        </div>
+        <!-- registered before? -->
+        <div class="text-center mb-2 mt-5 text-gray-400 hover:underline hover:text-gray-100">
+          <button (click)="wantRegiste = false" class="text-brown font-bold hover:underline">قبلا ثبت نام
+           کردید؟</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

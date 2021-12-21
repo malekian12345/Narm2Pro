@@ -1,0 +1,188 @@
+<div class="h-full" dir="rtl">
+  <div class="h-full px-2 md:px-0 flex flex-wrap justify-center content-start pb-7">
+    <!-- food -->
+    <div *ngIf="foodsData.length" class="w-full px-2 my-2 md:w-1/2 md:max-h-96 flex flex-col items-center ">
+      <div class="w-full border-4 rounded-lg border-yellow-500 overflow-y-auto">
+        <!-- header of foods -->
+        <!-- <div class="text-center p-3 flex justify-center items-center">
+          <div class="w-11/12 rounded-lg py-1 border-2 border-crimson">
+            <h1 class="text-xl font-bold">لیست غذای انتخابی</h1>
+          </div>
+        </div> -->
+        <!-- table of foods -->
+        <div>
+          <table class="cust-table min-w-full border-collapse  table">
+            <thead class="sticky top-0 z-10 table-header-group">
+              <tr class="border border-grey-500 border-none  table-row">
+                <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">نام غذا</th>
+                <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">تعداد غذا</th>
+                <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">قیمت غذا</th>
+                <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">قیمت کل</th>
+                <!-- <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">حذف</th> -->
+              </tr>
+            </thead>
+            <tbody class=" table-row-group">
+              <ng-container *ngFor="let item of foodsData;let indexOfelement=index;">
+                <tr [class]="indexOfelement%2?'bg-yellow-200':'bg-white'"
+                  class=" border border-grey-500 border-none  table-row">
+                  <td class="p-2 border border-grey-500  table-cell">
+                    <div class="flex justify-between items-center w-full h-full bkodak text-base font-bold">
+                      <ion-button (click)="deleteFood(item.id)" color="danger" size='small' class="my">
+                        <ion-icon name="close"></ion-icon>
+                      </ion-button>
+                      <div class="text-right w-full">
+                        {{item.name}}
+                      </div>
+
+                    </div>
+                  </td>
+                  <td class="p-2 border border-grey-500  table-cell">
+                    <div class="flex justify-center items-center">
+                      <ion-button size="small" color="warning"
+                        (click)="(item.store > item.number+1)?item.number=item.number+1:item.number">
+                        <ion-icon name="caret-up-outline"></ion-icon>
+                      </ion-button>
+                      <span class="mx-2 mt-1 font-bold morvarid">{{item.number}}</span>
+                      <ion-button size="small" color="warning"
+                        (click)="(item.number>1)? item.number=item.number-1 : item.number">
+                        <ion-icon name="caret-down-outline"></ion-icon>
+                      </ion-button>
+                    </div>
+                  </td>
+                  <td class="p-2 border border-grey-500 morvarid table-cell">{{item.price}}</td>
+                  <td class="p-2 border border-grey-500 morvarid table-cell">{{item.number * item.price}}</td>
+                  <!-- <td class="p-2 border border-grey-500 table-cell">
+                  <div>
+                    <ion-button color="danger">
+                      <ion-icon slot="icon-only" name="close"></ion-icon>
+                    </ion-button>
+                  </div>
+                </td> -->
+                </tr>
+              </ng-container>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- desk -->
+    <div *ngIf="desksData.length" class="w-full px-2 my-2 md:w-1/2 md:max-h-96 flex flex-col items-center ">
+      <div class="w-full border-4 rounded-lg border-yellow-500 overflow-y-auto">
+        <!-- header of desks -->
+        <!-- <div class="text-center p-3 flex justify-center items-center">
+          <div class="w-11/12 rounded-lg py-1 border-2 border-crimson">
+            <h1 class="text-xl font-bold">لیست غذای انتخابی</h1>
+          </div>
+        </div> -->
+        <!-- table of desks -->
+        <div>
+          <table class="cust-table min-w-full border-collapse  table">
+            <thead class="sticky top-0 z-10 table-header-group">
+              <tr class="border border-grey-500 border-none  table-row">
+                <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">شماره میز</th>
+                <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">ظرفیت میز</th>
+                <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">قیمت بر ساعت</th>
+                <th class="bg-gold p-2 text-black font-bold border border-grey-500  table-cell">
+                  <div class="flex justify-between items-center w-full h-full bkodak text-base font-bold">
+                    <ion-button (click)="countPrice()" color="light" size='small' class="my2">
+                      <ion-icon name="refresh-outline"></ion-icon>
+                    </ion-button>
+                    <div class="text-right w-full">
+                      قیمت کل
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class=" table-row-group">
+              <ng-container *ngFor="let item of desksData;let indexOfelement=index;">
+                <tr [class]="indexOfelement%2?'bg-yellow-200':'bg-white'"
+                  class="border border-grey-500 border-none  table-row">
+                  <td class="p-2 border border-grey-500  table-cell">
+                    <div class="flex justify-between items-center w-full h-full bkodak text-base font-bold">
+                      <ion-button (click)="deleteDesk(item.id)" color="danger" size='small' class="my">
+                        <ion-icon name="close"></ion-icon>
+                      </ion-button>
+                      <div class="text-right w-full">
+                        {{item.id}}
+                      </div>
+
+                    </div>
+                  </td>
+                  <td class="p-2 border border-grey-500 morvarid table-cell">
+                    {{item.capacity}}
+                  </td>
+                  <td class="p-2 border border-grey-500 morvarid table-cell">
+                    {{item.price}}
+                  </td>
+                  <td class="p-2 border border-grey-500 morvarid table-cell">
+                    {{item.totalPrice==0?'':item.totalPrice}}
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+
+            <tfoot>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- pick time and date -->
+    <div class="w-full md:w-1/2 mt-3 pr-4 flex flex-col md:flex-row justify-center">
+      <div class="w-80 md:w-7/12 lg:w-4/12 m-auto md:m-0">
+        <mat-card color="accent" class="demo-inline-calendar-card w-full bg-yellow-200">
+          <div class="text-center bg-yellow-500 rounded-lg bkodak">تاریخ مد نظر خود را انتخاب کنید</div>
+          <mat-calendar [minDate]="minDate" color="accent" class="morvarid" [(selected)]="selectedDate"></mat-calendar>
+        </mat-card>
+      </div>
+
+      <!-- <p>Selected date: {{selectedDate}}</p> -->
+      <div class=" h-full flex flex-col justify-center">
+        <div class="w-full h-14 flex justify-center md:justify-start md:mr-4 items-center ">
+          <div class="">
+            <input id="StartTime" class="border-b-4 text-xl border-crimson bkodak text-center outline-none text-brown"
+              placeholder="{{desksData.length? 'زمان شروع':'زمان خود را انتخاب کنید' }}" [format]="24"
+              [(ngModel)]="time1" aria-label="12hr format" [ngxTimepicker]="default" readonly>
+            <ngx-material-timepicker #default></ngx-material-timepicker>
+          </div>
+        </div>
+        <div *ngIf="desksData.length" class="w-full h-14 flex justify-center md:justify-start md:mr-4 items-center ">
+          <div class="">
+            <input id="EndTime" class="border-b-4 text-xl border-crimson bkodak text-center outline-none text-brown"
+              placeholder="زمان پایان" [format]="24" [(ngModel)]="time2" aria-label="12hr format"
+              [ngxTimepicker]="default1" readonly>
+            <ngx-material-timepicker #default1></ngx-material-timepicker>
+          </div>
+        </div>
+        <div class="w-full text-center flex justify-center md:justify-start items-center mb-11">
+          <!-- <p>{{time}}</p> -->
+          <ion-button id="LetShopping" (click)="transaction()" class="text-xl px-3 badr font-bold" shape="round" color="success">ثبت
+            نهایی و پرداخت</ion-button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="deskReservedBefore" class="w-full md:w-1/2 mt-3 pr-4 flex flex-col items-center ">
+      <ng-container *ngIf="deskReservedBefore.tableR1">
+        <p class="mt-3 text-right text-xl text-red-500 font-bold">
+          ميز شماره ی {{deskReservedBefore.tableR1.tableId}} در ساعت {{deskReservedBefore.tableR1.startTime}} تا ساعت {{deskReservedBefore.tableR1.EndTime}} رزرو شده است.
+        </p>
+      </ng-container>
+      <ng-container *ngIf="deskReservedBefore.tableR2">
+        <p class="mt-3 text-right text-xl text-red-500 font-bold">
+          ميز شماره ی {{deskReservedBefore.tableR2.tableId}} در ساعت {{deskReservedBefore.tableR2.startTime}} تا ساعت {{deskReservedBefore.tableR2.EndTime}} رزرو شده است.
+        </p>
+      </ng-container>
+      <ng-container *ngIf="deskReservedBefore.tableR3">
+        <p class="mt-3 text-right text-xl text-red-500 font-bold">
+          ميز شماره ی {{deskReservedBefore.tableR3.tableId}} در ساعت {{deskReservedBefore.tableR3.startTime}} تا ساعت {{deskReservedBefore.tableR3.EndTime}} رزرو شده است.
+        </p>
+      </ng-container>
+    </div>
+  </div>
+</div>

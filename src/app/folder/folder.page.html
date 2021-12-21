@@ -1,0 +1,49 @@
+<ion-header dir="rtl">
+  <!-- <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title size="large">{{ folder }}</ion-title>
+  </ion-toolbar> -->
+  <div class="bg-gold h-14 flex justify-between items-center px-2">
+
+    <div class="">
+      <ion-buttons slot="start">
+        <ion-menu-button color="dark"></ion-menu-button>
+      </ion-buttons>
+      <!-- <button name="menubutton" (click)="openMenu()">
+        <ion-icon slot="start" name="add"></ion-icon>
+      </button> -->
+    </div>
+    <div class="md:flex hidden ">
+      <ion-searchbar showCancelButton="always" color="warning"></ion-searchbar>
+      <div class="ml-2" style="display: none;">
+        <ion-button color="warning"  class="badr">
+          <ion-icon class="text-2xl" name="basket-outline"></ion-icon>
+          <span class="mr-1 text-lg font-bold">
+            سبد خرید
+          </span>
+        </ion-button>
+      </div>
+
+      <div class="ml-2 " style="display: none;">
+        <ion-button color="warning"  class="badr">
+          <ion-icon class="text-2xl" name="basket-outline"></ion-icon>
+          <span class="mr-1 text-lg font-bold">
+            سبد خرید
+          </span>
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="cus-font text-2xl">
+      سرآشپزباشی
+    </div>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="false" dir="rtl">
+  <div class="w-full cus-dir badr"  style="height: 100%;">
+    <router-outlet></router-outlet>
+  </div>
+</ion-content>

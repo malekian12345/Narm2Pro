@@ -1,0 +1,84 @@
+<ion-app>
+  <!-- <ion-split-pane contentId="main-content"> -->
+    <ion-menu contentId="main-content" type="overlay" side="end" dir="rtl" menuId="first"	>
+      <div class="back-cust h-full">
+        <ion-list *ngIf="this.servc.customer_login" id="inbox-list" class="menu-items bkodak">
+          <!-- header -->
+          <div class="w-full border-2 border-crimson rounded-xl h-20 flex items-center mb-2 active justify-start flex-row">
+            <div class="w-20 h-16">
+              <img src="assets/images/foods/1.png" class="w-full h-full object-cover" alt="">
+            </div>
+            <div class="h-16 flex items-center justify-center flex-col ">
+              <span class="text-xl morvarid">سلام  {{this.servc.customer_name}}</span>
+              <span class="text-xs">به رستوران ما خوش آمدید</span>
+            </div>
+          </div>
+          <!-- menu item -->
+          <div class="w-full h-10 mb-1">
+            <button (click)="closeMenu()"
+            class="w-full text-xl  h-full rounded-xl flex items-center justify-start px-2">
+              <ion-icon class="text-3xl ml-1" name="person-circle-outline"></ion-icon>
+              مشاهده پروفایل
+            </button>
+          </div>
+          <div class="w-full h-10 mb-1">
+            <button (click)="closeMenu()" [routerLinkActive]="['active']" [routerLink]="'customer/home'"
+            class="w-full text-xl  h-full rounded-xl flex items-center justify-start px-2">
+              <ion-icon class="text-3xl ml-1" name="person-circle-outline"></ion-icon>
+              صفحه اصلی
+            </button>
+          </div>
+          <div class="w-full h-10 mb-1">
+            <button (click)="closeMenu()" [routerLinkActive]="['active']" [routerLink]="'customer/foods'"
+            class="w-full text-xl  h-full rounded-xl flex items-center justify-start px-2">
+              <ion-icon class="text-3xl ml-1" name="person-circle-outline"></ion-icon>
+              رزرو غذا
+            </button>
+          </div>
+          <div class="w-full h-10 mb-1">
+            <button (click)="closeMenu()" id="desk_R" [routerLinkActive]="['active']" [routerLink]="'customer/desks'"
+            class="w-full text-xl  h-full rounded-xl flex items-center justify-start px-2">
+              <ion-icon class="text-3xl ml-1" name="person-circle-outline"></ion-icon>
+              رزرو میز
+            </button>
+          </div>
+          <div class="w-full h-10 mb-1">
+            <button (click)="closeMenu()" [routerLinkActive]="['active']" [routerLink]="'customer/shopping'"
+            class="w-full text-xl  h-full rounded-xl flex items-center justify-start px-2">
+              <ion-icon class="text-3xl ml-1" name="person-circle-outline"></ion-icon>
+              سبد خرید
+            </button>
+          </div>
+          <div class="w-full h-10 mb-1">
+            <button (click)="logOut()" [routerLinkActive]="['active']" [routerLink]="'customer/loginOrRegister'"
+            class="w-full text-xl  h-full rounded-xl flex items-center justify-start px-2">
+              <ion-icon class="text-3xl ml-1" name="person-circle-outline"></ion-icon>
+              خروج از حساب کاربری
+            </button>
+          </div>
+          <!-- <div class="w-full h-10 mb-1">
+            <button class="w-full h-full" id="closeMen" (click)="closeMenu()">
+
+            </button>
+          </div> -->
+          <!-- <ion-menu-toggle class="bg-red-500" auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+        </ion-list>
+        <ion-list *ngIf="!this.servc.customer_login" id="inbox-list" class="menu-items bkodak">
+          <div class="w-full h-10 mb-1">
+            <button (click)="closeMenu()" [routerLinkActive]="['active']" [routerLink]="'customer/loginOrRegister'"
+            class="w-full text-xl  h-full rounded-xl flex items-center justify-start px-2">
+              <ion-icon class="text-3xl ml-1" name="person-circle-outline"></ion-icon>
+              ورود به حساب کاربری
+            </button>
+          </div>
+        </ion-list>
+      </div>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  <!-- </ion-split-pane> -->
+</ion-app>

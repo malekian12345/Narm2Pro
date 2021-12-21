@@ -1,0 +1,9 @@
+ion-menu-button {
+  color: var(--ion-color-primary);
+}
+.cus-dir{
+  direction: ltr;//تا اسکرول سمت راست بماند
+  div{
+    direction: rtl;
+  }
+}
